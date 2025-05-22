@@ -40,11 +40,26 @@ for rows in row_range:
         print(xy[1], end=" ")  # 1
     print()
 
+
+
+# 전체 rows
 print(tuple(ws.rows))
-
-print(tuple(ws.columns))
-
 for row in tuple(ws.rows):
-    print(row[2].value, end=" ")
+    print(row[2].value)
+
+for row in ws.iter_rows():
+    print(row[2].value)
+
+# 전체 columns
+print(tuple(ws.columns))
+for column in tuple(ws.columns):
+    print(column[0].value)
+
+for column in ws.iter_cols():
+    print(column[0].value)
+
+# 1번째 줄부터 5번째 줄까지, 2번째 열부터 3번째 열까지
+for row in ws.iter_rows(min_row=1, max_row=5, min_col=2, max_col=3):
+    print(row[2].value)
 
 wb.save("example.xlsx")
