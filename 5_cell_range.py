@@ -41,8 +41,7 @@ for rows in row_range:
     print()
 
 
-
-# 전체 rows
+# all rows
 print(tuple(ws.rows))
 for row in tuple(ws.rows):
     print(row[2].value)
@@ -50,7 +49,7 @@ for row in tuple(ws.rows):
 for row in ws.iter_rows():
     print(row[2].value)
 
-# 전체 columns
+# all columns
 print(tuple(ws.columns))
 for column in tuple(ws.columns):
     print(column[0].value)
