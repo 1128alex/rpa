@@ -56,7 +56,7 @@ for column in tuple(ws.columns):
 
 for column in ws.iter_cols():
     print(column[0].value)
-#
+
 # 1번째 줄부터 5번째 줄까지, 2번째 열부터 3번째 열까지
 for row in ws.iter_rows(min_row=1, max_row=5, min_col=2, max_col=3):
     print(row[2].value)
