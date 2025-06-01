@@ -52,7 +52,7 @@ print(result)
 # find files with pattern
 import fnmatch
 
-pattern = "*.py"
+pattern = "*.txt"
 result = []
 for root, dirs, files in os.walk("."):
     for name in files:
