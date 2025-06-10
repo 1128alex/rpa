@@ -5,4 +5,3 @@ ws = wb.active
 ws.title = "My Sheet"
 wb.save("example.xlsx")
 wb.close()
-
