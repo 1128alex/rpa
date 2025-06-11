@@ -9,15 +9,17 @@ if w.isActive == False:
     w.activate()
 
 pyautogui.sleep(0.7)
-pyautogui.click(pyautogui.locateOnScreen("excel_file.png", confidence=0.8))
+pyautogui.click(pyautogui.locateOnScreen("images/excel_file.png", confidence=0.8))
 pyautogui.sleep(0.7)
-pyautogui.click(pyautogui.locateOnScreen("create_a_copy.png", confidence=0.8))
+pyautogui.click(pyautogui.locateOnScreen("images/create_a_copy.png", confidence=0.8))
 pyautogui.sleep(0.7)
-pyautogui.click(pyautogui.locateOnScreen("download_a_copy.png", confidence=0.8))
+pyautogui.click(pyautogui.locateOnScreen("images/download_a_copy.png", confidence=0.8))
 pyautogui.sleep(0.7)
-pyautogui.rightClick(pyautogui.locateOnScreen("file_explorer.png", confidence=0.8))
+pyautogui.rightClick(
+    pyautogui.locateOnScreen("images/file_explorer.png", confidence=0.8)
+)
 pyautogui.sleep(0.7)
-pyautogui.click(pyautogui.locateOnScreen("file_download.png", confidence=0.8))
+pyautogui.click(pyautogui.locateOnScreen("images/file_download.png", confidence=0.8))
 pyautogui.sleep(0.7)
 
 fw = pyautogui.getActiveWindow()
@@ -26,29 +28,26 @@ if fw.isMaximized == False:
 pyautogui.sleep(0.7)
 
 pyautogui.write("x")
-# pyautogui.click(
-#     pyautogui.locateOnScreen("file_account_book.png", confidence=0.6), interval=2
-# )
 pyautogui.hotkey("ctrl", "x")
 pyautogui.sleep(0.7)
 
-pyautogui.doubleClick(pyautogui.locateOnScreen("cs.png", confidence=0.8))
+pyautogui.doubleClick(pyautogui.locateOnScreen("images/cs.png", confidence=0.8))
 pyautogui.sleep(0.7)
-pyautogui.doubleClick(pyautogui.locateOnScreen("automation.png", confidence=0.8))
+pyautogui.doubleClick(pyautogui.locateOnScreen("images/automation.png", confidence=0.8))
 pyautogui.sleep(0.7)
 pyautogui.doubleClick(
-    pyautogui.locateOnScreen("account_book_folder.png", confidence=0.8)
+    pyautogui.locateOnScreen("images/account_book_folder.png", confidence=0.8)
 )
 pyautogui.sleep(0.7)
 
-pyautogui.click(pyautogui.locateOnScreen("view.png", confidence=0.8))
+pyautogui.click(pyautogui.locateOnScreen("images/view.png", confidence=0.8))
 pyautogui.sleep(0.7)
-pyautogui.click(pyautogui.locateOnScreen("list_view.png", confidence=0.8))
+pyautogui.click(pyautogui.locateOnScreen("images/list_view.png", confidence=0.8))
 pyautogui.sleep(0.7)
 pyautogui.click(800, 500)
 pyautogui.write("1")
 pyautogui.sleep(0.7)
-pyautogui.click(pyautogui.locateOnScreen("trashcan.png", confidence=0.8))
+pyautogui.click(pyautogui.locateOnScreen("images/trashcan.png", confidence=0.8))
 pyautogui.sleep(0.7)
 pyautogui.click(800, 500)
 pyautogui.sleep(0.7)

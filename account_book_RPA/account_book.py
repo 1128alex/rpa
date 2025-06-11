@@ -63,7 +63,7 @@ pyperclip.copy(clipboard_data.strip())
 wb.save("1account_book.xlsx")
 wb.close()
 
-pyautogui.rightClick(pyautogui.locateOnScreen("chrome.png", confidence=0.8))
+pyautogui.rightClick(pyautogui.locateOnScreen("images/chrome.png", confidence=0.8))
 pyautogui.write(["up", "up", "up", "enter"], interval=0.25)
 
 
@@ -88,7 +88,7 @@ while pyautogui.getActiveWindow().title != "Excel | Microsoft 365 Copilot - Chro
 pyautogui.moveTo(636, 462)
 
 for i in range(10):
-    account_book2 = safe_locate_on_screen("account_book2.png", confidence=0.95)
+    account_book2 = safe_locate_on_screen("images/account_book2.png", confidence=0.95)
     if account_book2 is not None:
         print("b")
         pyautogui.click(account_book2)
