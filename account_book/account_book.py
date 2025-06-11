@@ -1,28 +1,15 @@
 import pyautogui
 from pyautogui import ImageNotFoundException
 from openpyxl import load_workbook
-
+import sys
 import pyperclip
 import re
 
-for w in pyautogui.getWindowsWithTitle("이지원님의 메시지"):
-    print(w)
-
-kakaoWindow = pyautogui.getWindowsWithTitle("이지원님의 메시지")[0]
-print(kakaoWindow)
-if kakaoWindow.isActive == False:
-    kakaoWindow.activate()
-pyautogui.click(
-    kakaoWindow.left + kakaoWindow.width / 2, kakaoWindow.top + kakaoWindow.height / 2
-)
-
-pyautogui.hotkey("ctrl", "a")
-pyautogui.hotkey("ctrl", "c")
-
-clipboard_text = pyperclip.paste()
+print("Paste the log and press Ctrl+D or Ctrl+Z:")
+clipboard_text = sys.stdin.read()
 
 lines = clipboard_text.splitlines()
-result = []
+dates = []
 amounts = []
 store_names = []
 
@@ -30,7 +17,10 @@ for i in range(1, len(lines), 2):
     line = lines[i].strip()
     if line:
         tokens = line.split()
-        result.append(tokens)
+
+        month, day = tokens[2].split("/")
+        date = f"{int(month)}월 {int(day)}일"
+        dates.append(date)
 
         match = re.search(r"\d[\d,]*", tokens[4])
         amount = int(match.group().replace(",", ""))
@@ -42,36 +32,25 @@ for i in range(1, len(lines), 2):
 print("Extracted amounts:", amounts)
 print("Extracted merchant names:", store_names)
 
-wb = load_workbook("account_book.xlsx")
+wb = load_workbook("1account_book.xlsx")
 ws = wb.active
 ws.title = "temp"
 
-index = 2
-while True:
-    if ws.cell(row=index, column=2).value is None:
-        break
+index = 1
+while ws.cell(row=index, column=2).value is not None:
     index += 1
 
-for store_name in store_names:
-    ws.cell(row=index, column=2, value=store_name)
-    index += 1
-    print("added store name")
+last_written_date = None
 
+for date, store, amount in zip(dates, store_names, amounts):
+    if date != last_written_date:
+        ws.cell(row=index, column=1, value=date)
+        last_written_date = date
 
-index = 2
-while True:
-    if ws.cell(row=index, column=3).value is None:
-        break
-    index += 1
-
-for amount in amounts:
+    ws.cell(row=index, column=2, value=store)
     ws.cell(row=index, column=3, value=amount)
-    index += 1
 
-for x in range(1, ws.max_row + 1):
-    for y in range(1, ws.max_column + 1):
-        print(ws.cell(row=x, column=y).value, end=" ")
-    print()
+    index += 1
 
 clipboard_data = ""
 
@@ -81,10 +60,8 @@ for row in ws.iter_rows(min_row=1, max_row=ws.max_row, max_col=ws.max_column):
 
 pyperclip.copy(clipboard_data.strip())
 
-print("All data copied to clipboard! You can now paste it into Excel Online.")
-
+wb.save("1account_book.xlsx")
 wb.close()
-
 
 pyautogui.rightClick(pyautogui.locateOnScreen("chrome.png", confidence=0.8))
 pyautogui.write(["up", "up", "up", "enter"], interval=0.25)
@@ -121,12 +98,12 @@ for i in range(10):
         pyautogui.scroll(-300)
         pyautogui.sleep(1)
 
-while pyautogui.getActiveWindow().title != "가계부.xlsx - Chrome":
+while pyautogui.getActiveWindow().title != "x가계부.xlsx - Chrome":
     pyautogui.sleep(1)
     pyautogui.sleep(2)
 
 pyautogui.click(1700, 900)
 
+pyautogui.sleep(5)
 pyautogui.hotkey("ctrl", "a")
-pyautogui.sleep(3)
 pyautogui.hotkey("ctrl", "v")
