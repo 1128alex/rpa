@@ -59,3 +59,4 @@ for root, dirs, files in os.walk("."):
         if fnmatch.fnmatch(name, pattern):
             result.append(os.path.join(root, name))
 print(result)
+print(result)
