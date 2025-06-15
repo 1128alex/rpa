@@ -4,3 +4,4 @@ import pyautogui
 print(pyautogui.size())
 # size[0] : width
 # size[1] : height
+#
