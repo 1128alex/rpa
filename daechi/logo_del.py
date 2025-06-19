@@ -1,11 +1,13 @@
 import pyautogui
 from pyautogui import ImageNotFoundException
 
+
 def safe_locate_on_screen(*args, **kwargs):
     try:
         return pyautogui.locateOnScreen(*args, **kwargs, confidence=0.9)
     except ImageNotFoundException:
         return None
+
 
 pyautogui.hotkey("alt", "tab")
 
@@ -24,7 +26,7 @@ for i in range(30):
     active_window = pyautogui.getActiveWindow()
     center_x = active_window.left + active_window.width // 2
     center_y = active_window.top + active_window.height // 2
-    pyautogui.moveTo(center_x, center_y)
+    pyautogui.click(center_x, center_y)
 
     logo = safe_locate_on_screen("logo.png")
 

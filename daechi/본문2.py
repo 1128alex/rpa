@@ -34,7 +34,7 @@ pyautogui.sleep(0.2)
 pyautogui.write(["home"])
 pyautogui.sleep(0.2)
 
-lineNum = 27
+lineNum = 45
 
 for i in range(lineNum):
     pyautogui.hotkey("shift", "down")
@@ -43,18 +43,18 @@ for i in range(lineNum):
     pyautogui.write(["end"])
     pyautogui.write(["backspace"])
 
-    j = 0
-    word_check = safe_locate_on_screen("55.png")
-    while word_check is None and j != 50:
-        pyautogui.write(" ")
-        pyautogui.sleep(0.1)
-        word_check = safe_locate_on_screen("55.png")
-        j += 1
+    # j = 0
+    # word_check = safe_locate_on_screen("55.png")
+    # while word_check is None and j != 50:
+    #     pyautogui.write(" ")
+    #     pyautogui.sleep(0.1)
+    #     word_check = safe_locate_on_screen("55.png")
+    #     j += 1
 
     pyautogui.write(["right"])
     pyautogui.write(["end"])
     pyautogui.write(["right"])
     pyautogui.write(["home"])
 
-    for k in range(lineNum * 2):
-        pyautogui.hotkey("shift", "up")
+# for k in range(lineNum * 2):
+#     pyautogui.hotkey("shift", "up")

@@ -1,3 +1,7 @@
-import os
+import pyautogui
+from pyautogui import ImageNotFoundException
 
-print(os.getcwd())
+pyautogui.hotkey("alt", "tab")
+
+for i in range(8):
+    pyautogui.write(["backspace", "right", "end", "right"])
