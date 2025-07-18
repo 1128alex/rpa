@@ -5,7 +5,7 @@ import sys
 import pyperclip
 import re
 
-print("Paste the log and press Ctrl+D or Ctrl+Z:")
+print("Paste the log and press Ctrl+Z:")
 clipboard_text = sys.stdin.read()
 
 lines = clipboard_text.splitlines()
@@ -70,9 +70,6 @@ pyautogui.write(["up", "up", "up", "enter"], interval=0.25)
 while pyautogui.getActiveWindow().title != "새 탭 - Chrome":
     pyautogui.sleep(0.5)
 
-pyautogui.write("excel")
-pyautogui.write(["enter"])
-
 
 def safe_locate_on_screen(*args, **kwargs):
     try:
@@ -80,12 +77,6 @@ def safe_locate_on_screen(*args, **kwargs):
     except ImageNotFoundException:
         return None
 
-
-print("a")
-while pyautogui.getActiveWindow().title != "Excel | Microsoft 365 Copilot - Chrome":
-    pyautogui.sleep(1)
-
-pyautogui.moveTo(636, 462)
 
 for i in range(10):
     account_book2 = safe_locate_on_screen("images/account_book2.png", confidence=0.95)
@@ -106,4 +97,5 @@ pyautogui.click(1700, 900)
 
 pyautogui.sleep(5)
 pyautogui.hotkey("ctrl", "a")
+pyautogui.sleep(0.2)
 pyautogui.hotkey("ctrl", "v")
